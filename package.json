@@ -20,9 +20,6 @@
           "oss-fuzz.OSS.Path": {
             "type": "string"
           }
-        },
-        "env": {
-          "OSSFUZZ": "Davdd"
         }
       }
     ],

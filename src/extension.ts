@@ -14,8 +14,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 
 var child_process = require("child_process");
@@ -135,6 +133,7 @@ async function setup_ossfuzz_handler() {
   const [res, output] = systemSync(cmdToExec);
   if (res == false) {
     console.log("Failed to run fuzzer");
+    console.log(output);
   }
   console.log("Finished cloning oss-fuzz");
 
@@ -151,10 +150,6 @@ async function run_fuzzer_handler() {
   }
   let cmdToExec = "python3 " + oss_fuzz_repository_path + "/infra/helper.py run_fuzzer ";
   // Runs a fuzzer from a given project.
-  console.log(">>>>>>>>>>");
-  console.log(process.env.OSSFUZZ);
-  console.log(">>>>>>>>>>");
-
   const projectName = await vscode.window.showInputBox({
     value: "",
     placeHolder: "Type a project name",
@@ -290,11 +285,9 @@ async function set_oss_fuzz_path() {
       }
       is_valid = true;
     } else {
-      //console.log("Not a directory");
       is_valid = false;
     }
   } catch {
-    //console.log("Failed to check directory");
     is_valid = false;
   }
 

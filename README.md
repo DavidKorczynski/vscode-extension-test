@@ -1,71 +1,21 @@
-# helloworld2 README
+# Visual studio code extension
 
-This is the README for your extension "helloworld2". After writing up a brief description, we recommend including the following sections.
+NB: This is in progress.
 
-## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+# To use:
+Open the folder in vscode. Use `f5` to launch the extension runner, and
+then `ctrl-shift-p` to run commands. Commands supported are prefixed with
+`OSS-Fuzz`.
 
-For example if there is an image subfolder under your extension project workspace:
+Example workflow. Run the commands:
 
-\!\[feature X\]\(images/feature-x.png\)
+1. *OSS-Fuzz: Set up OSS-Fuzz* This will download the OSS-Fuzz repository and store it in `/tmp/oss-fuzz`.
+2. *OSS-Fuzz: Build fuzzers* This will prompt for a project name, which will then build the fuzzers for the given project.
+3. *OSS-Fuzz: Run fuzzer from OSS-Fuzz project* This will prompt for a project name, fuzzer name and duration and start running the fuzzer using OSS-Fuzz infrastructure.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-## Requirements
+You can use the command *OSS-Fuzz: Set project path* to map a local path to a project in OSS-Fuzz, which will then cause this folder to be used for the project's source code when building the fuzzers. This is useful to e.g. sync your development environment with OSS-Fuzz such that OSS-Fuzz doesn't clone your repository from e.g. Github, but uses the local version instead. Note the local path should be absolute.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+To extract a full coverage and introspector profile you can use *OSS-Fuzz: Run end-to-end Fuzz Introspector on a project*.
